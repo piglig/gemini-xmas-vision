@@ -283,7 +283,47 @@
             opacity: 1;
         }
     </style>
-    
+</head>
+<body>
+
+    <div id="loading">正在初始化 AR 引擎...<br><span style="font-size:14px; color:#ccc;">请允许使用摄像头</span></div>
+
+    <video id="input-video"></video>
+    <div id="canvas-container"></div>
+
+    <div id="ui-layer">
+        <div class="hud-top">
+            <div class="hud-status" id="status-text">状态: 等待手势</div>
+            <div class="hud-instruction" id="instruction-text">请将手掌放入摄像头视野</div>
+            <div id="gesture-icon">✋</div>
+        </div>
+        <div id="debug-log">初始化...</div>
+    </div>
+
+    <!-- 捏合时展示的大图 -->
+    <div id="overlay-image-container">
+        <img id="overlay-image" src="" alt="Memory" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+    </div>
+
+    <!-- 手势追踪光标 -->
+    <div id="hand-cursor"></div>
+
+    <!-- 手势指示器 -->
+    <div id="gesture-indicator">
+        <div class="gesture-dot" id="dot-hand" title="手掌检测"></div>
+        <div class="gesture-dot" id="dot-move" title="移动控制"></div>
+        <div class="gesture-dot" id="dot-closed" title="闭合手势"></div>
+    </div>
+
+    <!-- 祝福动画 -->
+    <div id="blessing-container">
+        <div class="blessing-text" id="blessing-text"></div>
+    </div>
+
+    <!-- 音乐控制 -->
+    <button id="music-btn" title="播放/暂停音乐">🔇</button>
+    <div id="music-hint">点击播放圣诞音乐</div>
+
     <!-- Application Entry Point -->
     <script type="module" src="js/app.js"></script>
 </body>
