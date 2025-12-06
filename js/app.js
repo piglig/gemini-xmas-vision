@@ -7,11 +7,11 @@ async function startApp() {
         // 1. Load configuration and libraries (Three.js, MediaPipe)
         await initEnvironment();
 
-        // 2. Initialize Three.js Scene
-        initScene();
-
-        // 3. Detect and load photos
+        // 2. Detect and load photos (Must be done before scene creation)
         await autoDetectPhotos();
+
+        // 3. Initialize Three.js Scene
+        initScene();
 
         // 4. Initialize MediaPipe Hand Tracking
         await initHandTracking();
