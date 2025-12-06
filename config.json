@@ -1,0 +1,4 @@
+{
+    "cdn_region": "LOCAL",
+    "note": "Set cdn_region to 'CN' for China, 'GLOBAL' for international, or 'LOCAL' for offline use."
+}

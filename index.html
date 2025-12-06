@@ -348,6 +348,16 @@
                     hands: "https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js",
                     assets: "https://cdn.jsdelivr.net/npm/@mediapipe/hands/" // 用于 locateFile
                 }
+            },
+            LOCAL: {
+                three: "libs/three/three.min.js",
+                mediapipe: {
+                    camera: "libs/mediapipe/camera_utils.js",
+                    control: "libs/mediapipe/control_utils.js",
+                    drawing: "libs/mediapipe/drawing_utils.js",
+                    hands: "libs/mediapipe/hands.js",
+                    assets: "libs/mediapipe/" // 本地 assets 目录
+                }
             }
         };
 
@@ -366,30 +376,30 @@
 
         async function initEnvironment() {
             const loadingEl = document.getElementById('loading');
-            loadingEl.innerHTML = "正在检测网络环境...";
+            loadingEl.innerHTML = "正在读取配置...";
             
-            let config = CDN_SOURCES.GLOBAL; // 默认全球源
+            let config = CDN_SOURCES.LOCAL; // 默认使用本地源，更稳定
             
             try {
-                // 简单的 IP 地理位置检查
-                // 使用 ipapi.co (有免费额度) 或者其他类似服务
-                const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(3000) });
+                // 读取配置文件 config.json
+                // 添加时间戳防止缓存
+                const res = await fetch('config.json?t=' + new Date().getTime());
                 if (res.ok) {
                     const data = await res.json();
-                    console.log("Detected Location:", data.country_code);
-                    if (data.country_code === 'CN') {
+                    console.log("Config loaded:", data);
+                    if (data.cdn_region === 'CN') {
                         config = CDN_SOURCES.CN;
+                    } else if (data.cdn_region === 'GLOBAL') {
+                        config = CDN_SOURCES.GLOBAL;
                     }
+                } else {
+                    console.warn("Config load failed, using LOCAL default.");
                 }
             } catch (e) {
-                console.warn("IP check failed, falling back to CN source for safety (better accessibility in CN than Global in CN).", e);
-                // 如果检测超时或失败，为了保证中国用户（最可能受限的群体）能用，
-                // 激进策略是回退到 CN 源，因为 ElemeCDN 在国外通常也能访问，只是慢一点；
-                // 但 jsDelivr 在国内是完全挂的。
-                config = CDN_SOURCES.CN;
+                console.warn("Config load error, using LOCAL default.", e);
             }
 
-            loadingEl.innerHTML = `正在加载核心库...<br><span style="font-size:12px;color:#aaa">Source: ${config === CDN_SOURCES.CN ? 'China Mirror' : 'Global CDN'}</span>`;
+            loadingEl.innerHTML = `正在加载核心库...<br><span style="font-size:12px;color:#aaa">Source: ${config === CDN_SOURCES.CN ? 'China Mirror' : (config === CDN_SOURCES.GLOBAL ? 'Global CDN' : 'Local Cache')}</span>`;
             
             mpAssetBase = config.mediapipe.assets;
 

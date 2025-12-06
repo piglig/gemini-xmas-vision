@@ -44,11 +44,44 @@ python3 -m http.server 8080
 **[http://localhost:8080](http://localhost:8080)**
 
 ### 3. 授予权限
-首次打开时，浏览器会询问摄像头权限，请点击 **“允许”**。
+首次打开时, 浏览器会询问摄像头权限, 请点击 **“允许”**。
+
+---
+
+## 🌐 CDN 配置 (CDN Configuration)
+
+本项目使用 `config.json` 文件来控制 CDN 资源的加载策略。根据你的网络环境和使用场景，可以修改 `cdn_region` 字段来选择不同的资源来源。
+
+打开项目根目录下的 `config.json` 文件，你可以看到类似以下内容：
+
+```json
+{
+    "cdn_region": "LOCAL",
+    "note": "Set cdn_region to 'CN' for China, 'GLOBAL' for international, or 'LOCAL' for offline use."
+}
+```
+
+`cdn_region` 支持以下三个值：
+
+*   **`"GLOBAL"` (国际 CDN)**：
+    *   **用途**：适用于中国大陆以外的地区。
+    *   **说明**：使用 `cdnjs.cloudflare.com` 和 `cdn.jsdelivr.net` 等国际主流 CDN 加载资源，这些服务在全球范围内访问速度较快且稳定。
+*   **`"CN"` (中国大陆 CDN)**：
+    *   **用途**：适用于中国大陆地区的用户。
+    *   **说明**：使用 `cdn.bootcdn.net` 和 `npm.elemecdn.com` 等国内 CDN 加载资源。这些 CDN 针对中国大陆的网络环境进行了优化，访问速度通常更快。**注意：在非中国大陆地区访问这些 CDN 可能会遇到 403 错误或连接问题。**
+*   **`"LOCAL"` (本地缓存)**：
+    *   **用途**：完全离线运行或解决 CDN 访问问题时使用。
+    *   **说明**：所有必要的 Three.js 和 MediaPipe 资源都会从项目本地的 `libs/` 文件夹中加载。这提供了最佳的稳定性和离线可用性，完全不受网络波动或 CDN 访问限制的影响。
+
+**建议：**
+*   如果你不确定应选择哪种模式，或者经常遇到网络问题，强烈建议使用 **`"LOCAL"`** 模式，它能确保项目最稳定的运行。
+*   在非中国大陆地区开发和部署时，推荐使用 `"GLOBAL"` 或 `"LOCAL"`。
+*   为中国大陆用户部署时，如果确保 `CN` CDN 可用，可以使用 `"CN"` 以获得最佳体验；否则，也建议使用 `"LOCAL"`。
 
 ---
 
 ## 🖼️ 图片资源管理
+
 
 本项目支持自动读取 `assets` 文件夹中的图片。
 
