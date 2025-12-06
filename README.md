@@ -32,11 +32,26 @@
 由于浏览器安全策略 (CORS) 和摄像头权限限制，本项目**不能**直接双击 `index.html` 打开，必须通过本地服务器运行。
 
 ### 1. 启动本地服务器
+本项目提供多种启动方式，你可以选择最适合你的方式：
+
+#### 方式一：使用 VS Code Live Server 插件（推荐）
+如果你使用 VS Code，可以安装并使用 `Live Server` 插件，它能提供更好的开发体验：
+1. 在 VS Code 中安装 `Live Server` 插件。
+2. 打开 `index.html` 文件，右键点击，选择 `Open with Live Server`。
+
+#### 方式二：使用 Python 启动一个简单的 HTTP 服务器
 确保已安装 Python 3，在项目根目录下运行：
 
 ```bash
 # 启动一个简单的 HTTP 服务器，端口 8080
 python3 -m http.server 8080
+```
+
+#### 方式三：运行 Python 后端程序
+如果你需要后端服务（例如，处理一些额外的逻辑），可以运行 `app.py`：
+
+```bash
+python app.py
 ```
 
 ### 2. 访问项目
