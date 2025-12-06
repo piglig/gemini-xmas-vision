@@ -1,0 +1,30 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# IDEs and editors
+.vscode/        # VSCode
+.idea/          # IntelliJ IDEA
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Temp files
+*~
+#*#
+*.swp
+.fuse_hidden*
+
+# Other generated files
+dist/
+build/
+
+# Python cache
+__pycache__/
+*.pyc
