@@ -1,5 +1,7 @@
 # 🎄 Gemini-Xmas-Vision (双子星·圣诞幻视)
 
+中文 | [English](README_EN.md)
+
 最近AR圣诞树相册挺火的，浅做了一个，分享给大家，最后祝大家圣诞节快乐！
 
 **Gemini-Xmas-Vision** 是一个基于 WebAR 技术的互动式 3D 粒子圣诞树项目。它结合了 **Three.js** 的粒子系统与 **MediaPipe** 的手势识别技术，允许用户通过手势与虚拟圣诞树进行沉浸式交互，查看螺旋照片墙上的美好回忆。
