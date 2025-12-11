@@ -1,6 +1,6 @@
-# 🎄 Gemini-Xmas-Vision (双子星·圣诞幻视)
+# 🎄 Gemini-Xmas-Vision
 
-中文 | [English](README_EN.md)
+[![Chinese](https://img.shields.io/badge/lang-中文-red)](README.md) [![English](https://img.shields.io/badge/lang-English-blue)](README_EN.md)
 
 最近AR圣诞树相册挺火的，浅做了一个，分享给大家，最后祝大家圣诞节快乐！
 

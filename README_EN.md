@@ -1,6 +1,6 @@
 # 🎄 Gemini-Xmas-Vision
 
-English | [中文](README.md)
+[![English](https://img.shields.io/badge/lang-English-blue)](README_EN.md) [![Chinese](https://img.shields.io/badge/lang-中文-red)](README.md)
 
 **Gemini-Xmas-Vision** is an interactive WebAR 3D particle Christmas tree. It combines the particle system of **Three.js** with **MediaPipe** hand-tracking so users can control a shimmering tree and browse a spiral photo wall with gestures.
 
